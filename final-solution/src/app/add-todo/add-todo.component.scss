@@ -1,0 +1,25 @@
+:host {
+  display: block;
+  max-width: 605px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.add-todo {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+
+  &__field {
+    flex: 0 0 1;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+
+  &__actions {
+    display: flex;
+    flex-direction: row-reverse;
+    width: 100%;
+  }
+}

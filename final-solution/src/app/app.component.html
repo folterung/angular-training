@@ -1,0 +1,25 @@
+<mat-toolbar color="primary" class="toolbar">
+  <div class="toolbar-title">
+    <span routerLink="home" class="toolbar-title__text">{{title}}</span>
+  </div>
+</mat-toolbar>
+
+<mat-sidenav-container class="layout-container">
+  <mat-sidenav class="side-menu" mode="side" opened>
+    <header class="side-menu__header">Actions</header>
+    <mat-nav-list>
+      <mat-list-item routerLink="/home" [disabled]="currentRoute === '/home'">
+        <mat-icon color="accent" matListIcon>home</mat-icon>
+        <span>Home</span>
+      </mat-list-item>
+
+      <mat-list-item routerLink="/add-todo" [disabled]="currentRoute === '/add-todo'">
+        <mat-icon color="accent" matListIcon>add</mat-icon>
+        <span>Add Todo</span>
+      </mat-list-item>
+   </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content class="layout-container__content">
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

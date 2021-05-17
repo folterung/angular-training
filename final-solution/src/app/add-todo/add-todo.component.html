@@ -1,0 +1,26 @@
+<app-view-title [text]="title"></app-view-title>
+
+<form [formGroup]="form" class="add-todo">
+    <mat-form-field class="add-todo__field" color="accent">
+        <mat-label>Description</mat-label>
+        <input #description matInput placeholder="Enter a description" formControlName="description">
+    </mat-form-field>
+
+    <mat-form-field class="add-todo__field" color="accent">
+        <mat-label>Due Date</mat-label>
+        <input matInput [matDatepicker]="dueDatePicker" formControlName="dueDate">
+        <mat-datepicker-toggle matSuffix [for]="dueDatePicker"></mat-datepicker-toggle>
+        <mat-datepicker #dueDatePicker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field class="add-todo__field" color="accent">
+        <mat-label>Priority</mat-label>
+        <mat-select formControlName="priority">
+            <mat-option *ngFor="let priority of priorities" [value]="priority">{{priority.text}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+</form>
+
+<div class="add-todo__actions">
+    <button mat-raised-button color="primary" (click)="save()" [disabled]="form.invalid">Save</button>
+</div>

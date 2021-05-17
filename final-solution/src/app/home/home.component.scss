@@ -1,0 +1,33 @@
+.todo-table {
+  width: 100%;
+
+  &__header {
+    box-sizing: border-box;
+    width: (100%-28%);
+
+    &--id {
+      text-align: center;
+      width: 4%;
+    }
+
+    &--select, &--priority, &--due-date {
+      text-align: center;
+      width: 8%;
+    }
+  }
+
+  &__cell {
+    box-sizing: border-box;
+    width: (100%-28%);
+
+    &--id {
+      text-align: center;
+      width: 4%;
+    }
+
+    &--select, &--priority, &--due-date {
+      text-align: center;
+      width: 8%;
+    }
+  }
+}

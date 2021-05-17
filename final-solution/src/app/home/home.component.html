@@ -1,0 +1,40 @@
+<app-view-title [text]="title"></app-view-title>
+
+<table class="todo-table" mat-table [dataSource]="todos">
+  <ng-container matColumnDef="select">
+    <th class="todo-table__header todo-table__header--select" mat-header-cell *matHeaderCellDef>
+      Select All
+      <br>
+      <mat-checkbox #selectAll (change)="toggleAll()"
+                    [checked]="selection.hasValue() && isAllSelected()"
+                    [indeterminate]="selection.hasValue() && !isAllSelected()"></mat-checkbox>
+    </th>
+    <td class="todo-table__cell todo-table__cell--select" mat-cell *matCellDef="let todo">
+      <mat-checkbox (change)="selection.toggle(todo)"
+                    [checked]="selection.isSelected(todo)"></mat-checkbox>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="id">
+    <th class="todo-table__header todo-table__header--id" mat-header-cell *matHeaderCellDef>Id</th>
+    <td class="todo-table__cell todo-table__cell--id" mat-cell *matCellDef="let todo">{{todo.id}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="priority">
+    <th class="todo-table__header todo-table__header--priority" mat-header-cell *matHeaderCellDef>Priority</th>
+    <td class="todo-table__cell todo-table__cell--priority" mat-cell *matCellDef="let todo">{{todo.priority.text}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="dueDate">
+    <th class="todo-table__header todo-table__header--due-date" mat-header-cell *matHeaderCellDef>Due Date</th>
+    <td class="todo-table__cell todo-table__cell--due-date" mat-cell *matCellDef="let todo">{{todo.dueDate | date: 'shortDate'}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="description">
+    <th class="todo-table__header" mat-header-cell *matHeaderCellDef>Description</th>
+    <td class="todo-table__cell" mat-cell *matCellDef="let todo">{{todo.description}}</td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>

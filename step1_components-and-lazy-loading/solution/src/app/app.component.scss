@@ -1,0 +1,36 @@
+.toolbar {
+  border-bottom: 2px solid #69f0ae;
+
+  &-title {
+    text-align: center;
+    width: 100%;
+
+    &__text {
+      cursor: pointer;
+    }
+  }
+}
+
+.layout-container {
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 64px;
+
+  &__content {
+    padding: 15px;
+  }
+}
+
+.side-menu {
+  width: 200px;
+
+  &__header {
+    background-color: #69f0ae;
+    color: #222222;
+    font-size: 18px;
+    padding: 10px 0px;
+    text-align: center;
+  }
+}

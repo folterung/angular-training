@@ -1,0 +1,24 @@
+{
+  "name": "angular-training",
+  "version": "0.0.0",
+  "scripts": {
+    "ng": "ng",
+    "start": "concurrently --kill-others \"npm run mock-server\" \"npm run dev-server\"",
+    "build": "ng build",
+    "test": "ng test",
+    "lint": "ng lint",
+    "e2e": "ng e2e",
+    "dev-server": "ng serve",
+    "mock-server": "node ./mock-api/server.js"
+  },
+  "private": true,
+  "dependencies": {},
+  "devDependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1"
+  },
+  "description": "Training project used to guide new Angular developers down the path of creating their first single page application (SPA).",
+  "author": "kevin.warnock@kinsaleins.com",
+  "license": "ISC"
+}

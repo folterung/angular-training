@@ -1,0 +1,38 @@
+[
+  {
+    "description": "First todo",
+    "dueDate": "06/22/2024",
+    "id": 0,
+    "priorityId": 3
+  },
+  {
+    "description": "Second todo",
+    "dueDate": "08/19/2020",
+    "id": 1,
+    "priorityId": 1
+  },
+  {
+    "description": "Third todo",
+    "dueDate": "04/22/2020",
+    "id": 2,
+    "priorityId": 2
+  },
+  {
+    "description": "Fourth todo",
+    "dueDate": "02/17/2020",
+    "id": 3,
+    "priorityId": 3
+  },
+  {
+    "description": "Fifth todo",
+    "dueDate": "06/22/2022",
+    "priorityId": 0,
+    "id": 5
+  },
+  {
+    "description": "Do something",
+    "dueDate": "2021-05-19T04:00:00.000Z",
+    "priorityId": 1,
+    "id": 6
+  }
+]
