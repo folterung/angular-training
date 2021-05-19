@@ -5,21 +5,21 @@
 </mat-toolbar>
 
 <mat-sidenav-container class="layout-container">
-<mat-sidenav class="side-menu" mode="side" opened>
-  <header class="side-menu__header">Actions</header>
-  <mat-nav-list>
-  <mat-list-item tabindex="0" (click)="goTo(HOME_PATH)" (keypress)="goTo(HOME_PATH)" [disabled]="currentRoute === HOME_PATH">
-        <mat-icon color="accent" matListIcon>home</mat-icon>
-        <span>Home</span>
-    </mat-list-item>
+  <mat-sidenav class="side-menu" mode="side" opened>
+    <header class="side-menu__header">Actions</header>
+    <mat-nav-list>
+    <mat-list-item tabindex="0" (click)="goTo(HOME_PATH)" (keypress)="goTo(HOME_PATH)" [disabled]="currentRoute === HOME_PATH">
+          <mat-icon color="accent" matListIcon>home</mat-icon>
+          <span>Home</span>
+      </mat-list-item>
 
-    <mat-list-item tabindex="0" (click)="goTo(ADD_TODO_PATH)" (keypress)="goTo(ADD_TODO_PATH)" [disabled]="currentRoute === ADD_TODO_PATH">
-        <mat-icon color="accent" matListIcon>add</mat-icon>
-        <span>Add Todo</span>
-    </mat-list-item>
-  </mat-nav-list>
-</mat-sidenav>
-<mat-sidenav-content class="layout-container__content">
-  <router-outlet></router-outlet>
-</mat-sidenav-content>
+      <mat-list-item tabindex="0" (click)="goTo(ADD_TODO_PATH)" (keypress)="goTo(ADD_TODO_PATH)" [disabled]="currentRoute === ADD_TODO_PATH">
+          <mat-icon color="accent" matListIcon>add</mat-icon>
+          <span>Add Todo</span>
+      </mat-list-item>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content class="layout-container__content">
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
 </mat-sidenav-container>
