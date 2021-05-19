@@ -1,10 +1,12 @@
 ## Step 1 - Components and lazy loading
 
+### Objective
+
 The objective for this step is to understand how to leverage the Angular Router to provide lazy loading benefits to your project.
 
 Why learn this as part of the first step?
 
-That's a great question! It is my belief that understanding how to work with Angular's Router is a vital piece of making a well-oiled SPA with Angular. So for the first step we will be creating some lazily loaded components to see how that all works.
+That's a great question! It is my belief that understanding how to work with Angular's Router is a vital piece of making a well-oiled SPA. So for the first step we will be creating some lazily loaded components to see how that all works.
 
 ### Steps
 
