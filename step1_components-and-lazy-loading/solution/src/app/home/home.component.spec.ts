@@ -4,7 +4,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { HomeComponent } from './home.component';
 import { HomeModule } from './home.module';
 
-describe('AddTodoComponent', () => {
+describe('HomeComponent', () => {
   beforeEach(async () => {
     TestBed.configureTestingModule({
       imports: [
