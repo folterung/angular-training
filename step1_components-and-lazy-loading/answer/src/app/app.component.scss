@@ -33,4 +33,10 @@
     padding: 10px 0px;
     text-align: center;
   }
+
+  mat-list-item.mat-list-item-disabled {
+    &:focus {
+      background: black;
+    }
+  }
 }
