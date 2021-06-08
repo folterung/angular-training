@@ -6,7 +6,7 @@ import { AddTodoModule } from './add-todo.module';
 
 describe('AddTodoComponent', () => {
   beforeEach(async () => {
-    TestBed.configureTestingModule({
+    await TestBed.configureTestingModule({
       imports: [
         AddTodoModule,
         RouterTestingModule
