@@ -6,11 +6,32 @@ If you're interested in checking out the documentation automatically generated b
 
 ### Getting started
 
-1. Install dependencies needed for the mock-api by running `npm install` from the root of this project.
-2. As you work through different steps within the project make sure to navigate to that step's answer directory, run `npm install` to install necessary dependencies, and run `npm start` to see that step running live.
+1. Install dependencies by running `npm install`.
+2. As you work through each step you can serve it by running:
 
-**To see the final solution up and running you can navigate to the `final-solution` directory, install the dependencies via `npm install`, and run `npm start` to see the project in action.**
+```Bash
+# Valid steps:
+# - final-solution
+# - step1-answer
+# - step1-solution
+# - step2-answer
+# - step2-solution
 
+./run-step.sh step1-answer # serves the code from step1's answer directory.
+```
+
+**Additional information**:
+
+`./run-step.sh` is used when you would like to run the mock server along with a given step.
+
+If you would like to run two steps side by side you can do so by doing the following:
+
+1. Use a terminal and run `./run-step.sh <target step>`.
+    + This will start the mock server and the provided step.
+2. Open another terminal and run `ng serve <target step> --port 4300`.
+    + This will run a step on the provided port without attempting to start the mock server since it is already running.
+
+Now two different Angular applications will be running on different ports, and you can open them side by side for comparison.
 
 <!-- Links -->
 [AngularGeneratedReadme]: ./docs/AngularGeneratedReadme.md
