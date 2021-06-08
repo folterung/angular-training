@@ -51,7 +51,7 @@ Add a header and side navigation menu.
       ```
 
     </details>
-    </br>
+    <br>
 
 2. Update `app.component.ts`:
     <details>
@@ -101,7 +101,7 @@ Add a header and side navigation menu.
       ```
 
     </details>
-    </br>
+    <br>
 
 3. Update `app.component.html`:
     <details>
@@ -136,4 +136,4 @@ Add a header and side navigation menu.
       ```
 
     </details>
-    </br>
+    <br>

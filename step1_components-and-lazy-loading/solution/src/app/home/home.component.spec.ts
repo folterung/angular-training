@@ -6,7 +6,7 @@ import { HomeModule } from './home.module';
 
 describe('HomeComponent', () => {
   beforeEach(async () => {
-    TestBed.configureTestingModule({
+    await TestBed.configureTestingModule({
       imports: [
         HomeModule,
         RouterTestingModule
