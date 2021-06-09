@@ -11,8 +11,8 @@ describe('AppComponent', () => {
   let location: Location;
   let router: Router;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
+  beforeEach(() => {
+    TestBed.configureTestingModule({
       imports: [
         AppModule,
         RouterTestingModule
@@ -33,7 +33,7 @@ describe('AppComponent', () => {
   });
 
   it(`should have the title set to 'TODO: Angular Training'`, () => {
-    expect(component.title).toEqual('TODO: Angular Training');
+    expect(component.title).toBe('TODO: Angular Training');
   });
 
   it('should render title', () => {

@@ -10,8 +10,8 @@ describe('AppRoutingModule', () => {
   let location: Location;
   let router: Router;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
+  beforeEach(() => {
+    TestBed.configureTestingModule({
       imports: [
         RouterTestingModule.withRoutes(routes)
       ]

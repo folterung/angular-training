@@ -57,7 +57,6 @@ describe('AppRoutingModule', () => {
 
   it(`Uses lazy loaded 'AddTodoComponent' when route '/add-todo'`, waitForAsync(() => {
     const route = routes.find(route => route.path === 'add-todo');
-    
 
     (route.loadChildren as any)().then((lazyLoadedModule) => {
       expect(new lazyLoadedModule()).toBeInstanceOf(AddTodoModule);

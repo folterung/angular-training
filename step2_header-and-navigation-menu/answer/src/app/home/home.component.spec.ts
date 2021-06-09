@@ -5,7 +5,7 @@ import { HomeComponent } from './home.component';
 import { HomeModule } from './home.module';
 
 describe('HomeComponent', () => {
-  beforeEach(async () => {
+  beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [
         HomeModule,
@@ -17,6 +17,6 @@ describe('HomeComponent', () => {
   it(`should have title 'Home Component Works!'`, () => {
     const fixture = TestBed.createComponent(HomeComponent);
     const component = fixture.componentInstance;
-    expect(component.title).toEqual('Home Component Works!');
+    expect(component.title).toBe('Home Component Works!');
   });
 });

@@ -5,7 +5,7 @@ import { AddTodoComponent } from './add-todo.component';
 import { AddTodoModule } from './add-todo.module';
 
 describe('AddTodoComponent', () => {
-  beforeEach(async () => {
+  beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [
         AddTodoModule,
@@ -17,6 +17,6 @@ describe('AddTodoComponent', () => {
   it(`should have title 'Add Todo Component Works!'`, () => {
     const fixture = TestBed.createComponent(AddTodoComponent);
     const component = fixture.componentInstance;
-    expect(component.title).toEqual('Add Todo Component Works!');
+    expect(component.title).toBe('Add Todo Component Works!');
   });
 });
