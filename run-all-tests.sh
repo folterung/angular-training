@@ -1,18 +1,18 @@
 #!/bin/bash
 
 function printTestLine {
-  echo "Running tests for $1";
+  printf "\nRunning tests for $1\n";
 }
 
-printTestLine final-solution
-ng test final-solution --watch=false
+function runStepTests {
+  printTestLine $1
+  ng test $1 --watch=false --browsers=ChromeHeadless
+}
 
-printTestLine step1-answer
-ng test step1-answer --watch=false
-printTestLine step1-solution
-ng test step1-solution --watch=false
+runStepTests final-solution
 
-printTestLine step2-answer
-ng test step2-answer --watch=false
-printTestLine step2-solution
-ng test step2-solution --watch=false
+runStepTests step1-answer
+runStepTests step1-solution
+
+runStepTests step2-answer
+runStepTests step2-solution
