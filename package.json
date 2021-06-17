@@ -2,6 +2,12 @@
   "name": "angular-training",
   "version": "0.0.0",
   "private": true,
+  "scripts": {
+    "all-tests": "./run-all-tests.sh",
+    "step1": "./run-side-by-side.sh step1-exercise step1-solution",
+    "step2": "./run-side-by-side.sh step2-exercise step2-solution",
+    "step3": "./run-side-by-side.sh step3-exercise step3-solution"
+  },
   "dependencies": {
     "@angular/animations": "~10.2.0",
     "@angular/cdk": "^10.2.7",
