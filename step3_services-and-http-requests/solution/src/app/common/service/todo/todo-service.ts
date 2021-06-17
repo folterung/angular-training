@@ -9,7 +9,7 @@ import { exhaustMap, tap } from 'rxjs/operators';
 @Injectable()
 export class TodoService {
   private static readonly baseUrl = `${environment.baseUrl}/todos`;
-  private static todos: Todo[] = [];
+  private static todos: Todo[];
   private static forceRefresh = true;
 
   constructor(private http: HttpClient) {}
