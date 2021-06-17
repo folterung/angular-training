@@ -47,7 +47,7 @@ export class TodoService {
   }
 
   removeTodo(todoId: number): Observable<Todo[]> {
-    return this.http.delete<number>(`${TodoService.baseUrl}/${todoId}`).pipe(
+    return this.http.delete<string>(`${TodoService.baseUrl}/${todoId}`).pipe(
       exhaustMap(() => {
         TodoService.forceRefresh = true;
         return this.getTodos();
