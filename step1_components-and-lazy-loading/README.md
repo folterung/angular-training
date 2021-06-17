@@ -123,6 +123,16 @@ That's a great question! It is my belief that understanding how to work with Ang
     <br>
 
 8. Repeat the above steps to create the `AddTodoComponent` following the same file naming conventions as previously stated.
+  
+    - Add a directory called `add-todo` in `src/app`.
+    - Add the component file (`add-todo.component.ts`) in `src/app/add-todo`.
+    - Add the component's template file (`add-todo.component.html`) in `src/app/add-todo`.
+    - Add the component's style file (`add-todo.component.scss`) in `src/app/add-todo`.
+    - Add the test file (`add-todo.component.spec.ts`) in `src/app/add-todo`.
+    - Add a module to group dependencies relevant to adding todos called `add-todo.module.ts`.
+    
+<br>
+
 9. Modify `app-routing.module.ts` to lazily load our previously defined modules.
 
     <details>
@@ -150,7 +160,7 @@ That's a great question! It is my belief that understanding how to work with Ang
     </details>
     <br>
     
-10. Add tests for `app-routing.module.ts`.
+10. Add tests for `app-routing.module.ts` in the `app-routing.module.spec.ts` file.
 
     <details>
       <summary>Snippet (Click to expand)</summary>
