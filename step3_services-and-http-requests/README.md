@@ -80,48 +80,59 @@ Setup two services `PriorityService` and `TodoService` and write test cases for 
 
 3. Add caching mechanism and method used to force data to be refreshed.
 
-    <details>
-      <summary>Snippet (Click to expand)</summary>
+    1. Add a `priorities` private static property with the type `Priority[]` and a value of `[]`;
 
-      ```TypeScript
-      import { HttpClient } from '@angular/common/http';
-      import { Injectable } from '@angular/core';
-      import { environment } from '@environment';
+    2. Add a forceRefresh private static property with the value of `true`.
 
-      import { Priority } from '@models/priority';
-      import { Observable, of } from 'rxjs';
-      import { tap } from 'rxjs/operators';
+    3. Create a method that sets this property to `true` when invoked.
+        + This method should have an argument called `shouldRefresh` with a default value of `true`.
+        
+        <br>
 
-      @Injectable()
-      export class PriorityService {
-          private static readonly baseUrl = `${environment.baseUrl}/priorities`;
-          private static priorities: Priority[];
-          private static forceRefresh = true;
+    4. Update the `getPriorities` method to call `this.forceRefresh(false)` once the data is retrieved so that future calls will return the previously fetched `priorities`.
 
-          constructor(private http: HttpClient) {}
+        <details>
+          <summary>Snippet (Click to expand)</summary>
 
-          forceRefresh() {
-              PriorityService.forceRefresh = true;
-          }
+          ```TypeScript
+          import { HttpClient } from '@angular/common/http';
+          import { Injectable } from '@angular/core';
+          import { environment } from '@environment';
 
-          getPriorities(): Observable<Priority[]> {
-              if (!PriorityService.forceRefresh) {
-                  return of([...PriorityService.priorities]);
+          import { Priority } from '@models/priority';
+          import { Observable, of } from 'rxjs';
+          import { tap } from 'rxjs/operators';
+
+          @Injectable()
+          export class PriorityService {
+              private static readonly baseUrl = `${environment.baseUrl}/priorities`;
+              private static priorities: Priority[];
+              private static forceRefresh = true;
+
+              constructor(private http: HttpClient) {}
+
+              forceRefresh(shouldRefresh = true) {
+                  PriorityService.forceRefresh = shouldRefresh;
               }
 
-              return this.http.get<Priority[]>(PriorityService.baseUrl).pipe(
-                  tap((priorities) => {
-                      PriorityService.forceRefresh = false;
-                      PriorityService.priorities = priorities;
-                  })
-              );
+              getPriorities(): Observable<Priority[]> {
+                  if (!PriorityService.forceRefresh) {
+                      return of([...PriorityService.priorities]);
+                  }
+
+                  return this.http.get<Priority[]>(PriorityService.baseUrl).pipe(
+                      tap((priorities) => {
+                          this.forceRefresh(false);
+                          PriorityService.priorities = priorities;
+                      })
+                  );
+              }
           }
-      }
 
-      ```
+          ```
 
-    </details>
-    <br>
+        </details>
+        <br>
 
 4. Add export to `src/app/common/service/priority/index.ts`.
 
@@ -324,81 +335,98 @@ Setup two services `PriorityService` and `TodoService` and write test cases for 
 
 3. Add caching mechanism and method used to force data to be refreshed.
 
-    <details>
-      <summary>Snippet (Click to expand)</summary>
-    
-      ```TypeScript
-      import { HttpClient } from '@angular/common/http';
-      import { Injectable } from '@angular/core';
-      import { environment } from '@environment';
+    1. Add a `todos` private static property with the type `Type[]` and a value of `[]`;
 
-      import { Todo } from '@models/index';
-      import { Observable, of } from 'rxjs';
-      import { exhaustMap, tap } from 'rxjs/operators';
+    2. Add a forceRefresh private static property with the value of `true`.
 
-      @Injectable()
-      export class TodoService {
-        private static readonly baseUrl = `${environment.baseUrl}/todos`;
-        private static todos: Todo[] = [];
-        private static forceRefresh = true;
+    3. Create a method that sets this property to `true` when invoked.
+        + This method should have an argument called `shouldRefresh` with a default value of `true`.
+        
+        <br>
 
-        constructor(private http: HttpClient) {}
+    4. Update the `getTodos` method to call `this.forceRefresh(false)` once the data is retrieved so that future calls will return the previously fetched `todos`.
 
-        forceRefresh() {
-          TodoService.forceRefresh = true;
-        }
+    5. Update the `addTodo` method to call `this.forceRefresh()` before attempting to fetch new todos.
 
-        addTodo(todoLike: Partial<Todo>): Observable<Todo[]> {
-          const todoToAdd = new Todo({
-            description: todoLike.description,
-            dueDate: todoLike.dueDate,
-            priorityId: todoLike.priority ? todoLike.priority.id : todoLike.priorityId
-          });
+    6. Update the `updateTodos` method to call `this.forceRefresh()` before attempting to fetch new todos.
 
-          return this.http.post<Todo[]>(TodoService.baseUrl, [todoToAdd]).pipe(
-            exhaustMap(() => {
-              TodoService.forceRefresh = true;
-              return this.getTodos();
-            })
-          );
-        }
+    7. Update the `removeTodo` method to call `this.forceRefresh()` before attempting to fetch new todos.
 
-        getTodos(): Observable<Todo[]> {
-          if (!TodoService.forceRefresh) {
-            return of([...TodoService.todos]);
+        <details>
+          <summary>Snippet (Click to expand)</summary>
+        
+          ```TypeScript
+          import { HttpClient } from '@angular/common/http';
+          import { Injectable } from '@angular/core';
+          import { environment } from '@environment';
+
+          import { Todo } from '@models/index';
+          import { Observable, of } from 'rxjs';
+          import { exhaustMap, tap } from 'rxjs/operators';
+
+          @Injectable()
+          export class TodoService {
+            private static readonly baseUrl = `${environment.baseUrl}/todos`;
+            private static todos: Todo[] = [];
+            private static forceRefresh = true;
+
+            constructor(private http: HttpClient) {}
+
+            forceRefresh(shouldRefresh = true) {
+              TodoService.forceRefresh = shouldRefresh;
+            }
+
+            addTodo(todoLike: Partial<Todo>): Observable<Todo[]> {
+              const todoToAdd = new Todo({
+                description: todoLike.description,
+                dueDate: todoLike.dueDate,
+                priorityId: todoLike.priority ? todoLike.priority.id : todoLike.priorityId
+              });
+
+              return this.http.post<Todo[]>(TodoService.baseUrl, [todoToAdd]).pipe(
+                exhaustMap(() => {
+                  this.forceRefresh();
+                  return this.getTodos();
+                })
+              );
+            }
+
+            getTodos(): Observable<Todo[]> {
+              if (!TodoService.forceRefresh) {
+                return of([...TodoService.todos]);
+              }
+
+              return this.http.get<Todo[]>(TodoService.baseUrl).pipe(
+                tap(todos => {
+                  this.forceRefresh(false);
+                  TodoService.todos = todos;
+                })
+              );
+            }
+
+            removeTodo(todoId: number): Observable<Todo[]> {
+              return this.http.delete<number>(`${TodoService.baseUrl}/${todoId}`).pipe(
+                exhaustMap(() => {
+                  this.forceRefresh();
+                  return this.getTodos();
+                })
+              );
+            }
+
+            updateTodos(todosToUpdate: Todo[]): Observable<Todo[]> {
+              return this.http.put<Todo[]>(TodoService.baseUrl, todosToUpdate).pipe(
+                exhaustMap(() => {
+                  this.forceRefresh();
+                  return this.getTodos();
+                })
+              );
+            }
           }
 
-          return this.http.get<Todo[]>(TodoService.baseUrl).pipe(
-            tap(todos => {
-              TodoService.todos = todos;
-              TodoService.forceRefresh = false;
-            })
-          );
-        }
+          ```
 
-        removeTodo(todoId: number): Observable<Todo[]> {
-          return this.http.delete<number>(`${TodoService.baseUrl}/${todoId}`).pipe(
-            exhaustMap(() => {
-              TodoService.forceRefresh = true;
-              return this.getTodos();
-            })
-          );
-        }
-
-        updateTodos(todosToUpdate: Todo[]): Observable<Todo[]> {
-          return this.http.put<Todo[]>(TodoService.baseUrl, todosToUpdate).pipe(
-            exhaustMap(() => {
-              TodoService.forceRefresh = true;
-              return this.getTodos();
-            })
-          );
-        }
-      }
-
-      ```
-
-    </details>
-    <br>
+        </details>
+        <br>
 
 4. Add export to `src/app/common/service/todo/index.ts`.
 
@@ -406,7 +434,7 @@ Setup two services `PriorityService` and `TodoService` and write test cases for 
       <summary>Snippet (Click to expand)</summary>
     
       ```TypeScript
-      export { TodoService } from './todo-service';
+      export { TodoService } from './todo.service';
 
       ```
 
@@ -434,9 +462,9 @@ Setup two services `PriorityService` and `TodoService` and write test cases for 
     
       ```TypeScript
       import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-      import { fakeAsync, TestBed, tick } from '@angular/core/testing';
+      import { TestBed } from '@angular/core/testing';
       import { Todo } from '@models/todo';
-      import { TodoService } from './todo-service';
+      import { TodoService } from './todo.service';
 
       describe('TodoService', () => {
         const todoBaseUrl = 'http://localhost:1337/todos';
@@ -689,6 +717,44 @@ Setup two services `PriorityService` and `TodoService` and write test cases for 
 
 <br><hr><br>
 
+### Update HomeModule to use the CommonModule and HttpClientModule
+
+1. Import `CommonModule` from `@angular/common`.
+2. Import `HttpClientModule` from `@angular/common/http`.
+3. Add `CommonModule` and `HttpClientModule` to the *imports* property for the `HomeModule`.
+
+    <details>
+      <summary>Snippet (Click to expand)</summary>
+    
+      ```TypeScript
+      import { CommonModule } from '@angular/common';
+      import { HttpClientModule } from '@angular/common/http';
+      import { NgModule } from '@angular/core';
+      import { RouterModule } from '@angular/router';
+      import { HomeComponent } from './home.component';
+
+      @NgModule({
+        declarations: [
+          HomeComponent
+        ],
+        imports: [
+          CommonModule,
+          HttpClientModule,
+          RouterModule.forChild([
+            {
+              path: '',
+              component: HomeComponent
+            }
+          ])
+        ]
+      })
+      export class HomeModule {}
+      ```
+    
+    </details>
+    
+<br><hr><br>
+
 ### Update HomeComponent to use the TodoService
 
 1. Add logic to get our todos during the `ngOnInit` lifecycle of the HomeComponent.
@@ -803,4 +869,4 @@ Setup two services `PriorityService` and `TodoService` and write test cases for 
       ```
     
     </details>
-    <br>
+    

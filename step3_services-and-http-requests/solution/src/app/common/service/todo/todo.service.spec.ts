@@ -1,7 +1,7 @@
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-import { fakeAsync, TestBed, tick } from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing';
 import { Todo } from '@models/todo';
-import { TodoService } from './todo-service';
+import { TodoService } from './todo.service';
 
 describe('TodoService', () => {
   const todoBaseUrl = 'http://localhost:1337/todos';

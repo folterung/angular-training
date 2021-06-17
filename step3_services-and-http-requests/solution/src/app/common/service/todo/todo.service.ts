@@ -9,13 +9,13 @@ import { exhaustMap, tap } from 'rxjs/operators';
 @Injectable()
 export class TodoService {
   private static readonly baseUrl = `${environment.baseUrl}/todos`;
-  private static todos: Todo[];
+  private static todos: Todo[] = [];
   private static forceRefresh = true;
 
   constructor(private http: HttpClient) {}
 
-  forceRefresh() {
-    TodoService.forceRefresh = true;
+  forceRefresh(shouldRefresh = true) {
+    TodoService.forceRefresh = shouldRefresh;
   }
 
   addTodo(todoLike: Partial<Todo>): Observable<Todo[]> {
@@ -27,7 +27,7 @@ export class TodoService {
 
     return this.http.post<Todo[]>(TodoService.baseUrl, [todoToAdd]).pipe(
       exhaustMap(() => {
-        TodoService.forceRefresh = true;
+        this.forceRefresh();
         return this.getTodos();
       })
     );
@@ -40,8 +40,8 @@ export class TodoService {
 
     return this.http.get<Todo[]>(TodoService.baseUrl).pipe(
       tap(todos => {
+        this.forceRefresh(false);
         TodoService.todos = todos;
-        TodoService.forceRefresh = false;
       })
     );
   }
@@ -49,7 +49,7 @@ export class TodoService {
   removeTodo(todoId: number): Observable<Todo[]> {
     return this.http.delete<string>(`${TodoService.baseUrl}/${todoId}`).pipe(
       exhaustMap(() => {
-        TodoService.forceRefresh = true;
+        this.forceRefresh();
         return this.getTodos();
       })
     );
@@ -58,7 +58,7 @@ export class TodoService {
   updateTodos(todosToUpdate: Todo[]): Observable<Todo[]> {
     return this.http.put<Todo[]>(TodoService.baseUrl, todosToUpdate).pipe(
       exhaustMap(() => {
-        TodoService.forceRefresh = true;
+        this.forceRefresh();
         return this.getTodos();
       })
     );

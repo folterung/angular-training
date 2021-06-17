@@ -9,13 +9,13 @@ import { tap } from 'rxjs/operators';
 @Injectable()
 export class PriorityService {
     private static readonly baseUrl = `${environment.baseUrl}/priorities`;
-    private static priorities: Priority[];
+    private static priorities: Priority[] = [];
     private static forceRefresh = true;
 
     constructor(private http: HttpClient) {}
 
-    forceRefresh() {
-        PriorityService.forceRefresh = true;
+    forceRefresh(shouldRefresh = true) {
+        PriorityService.forceRefresh = shouldRefresh;
     }
 
     getPriorities(): Observable<Priority[]> {
@@ -25,7 +25,7 @@ export class PriorityService {
 
         return this.http.get<Priority[]>(PriorityService.baseUrl).pipe(
             tap((priorities) => {
-                PriorityService.forceRefresh = false;
+                this.forceRefresh(false);
                 PriorityService.priorities = priorities;
             })
         );

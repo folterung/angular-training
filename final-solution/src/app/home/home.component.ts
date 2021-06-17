@@ -3,7 +3,7 @@ import { AfterViewInit, Component, OnInit, QueryList, ViewChildren } from '@angu
 import { MatCheckbox } from '@angular/material/checkbox';
 import { PriorityService } from '@common/service';
 
-import { TodoService } from '@common/service/todo/todo-service';
+import { TodoService } from '@common/service/todo/todo.service';
 import { Todo } from '@models/todo';
 import { combineLatest } from 'rxjs';
 
