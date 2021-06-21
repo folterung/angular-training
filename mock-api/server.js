@@ -65,13 +65,13 @@ app.post('/todos', (req, res) => {
 });
 
 app.delete('/todos/:todoId', (req, res) => {
-  console.log('todoId: ', req.params);
   const todoId = req.params.todoId;
 
   const todoToDeleteIndex = todos.findIndex(todo => todo.id === parseInt(todoId));
 
   if (todoToDeleteIndex > -1) {
     todos.splice(todoToDeleteIndex, 1);
+    todoIdCounter = todos.length > 0 ? todos[todos.length - 1].id + 1 : 0;
     save(TODOS_PATH, todos);
   }
 

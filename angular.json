@@ -96,7 +96,8 @@
               "./node_modules/@angular/material/prebuilt-themes/purple-green.css",
               "final-solution/src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [],
+            "browsers": "ChromeHeadless"
           }
         },
         "lint": {
@@ -126,33 +127,33 @@
         }
       }
     },
-    "step1-answer": {
+    "step1-exercise": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
           "style": "scss"
         }
       },
-      "root": "step1_components-and-lazy-loading/answer",
-      "sourceRoot": "step1_components-and-lazy-loading/answer/src",
+      "root": "step1_components-and-lazy-loading/exercise",
+      "sourceRoot": "step1_components-and-lazy-loading/exercise/src",
       "prefix": "app",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "step1_components-and-lazy-loading/answer/dist/angular-todo",
-            "index": "step1_components-and-lazy-loading/answer/src/index.html",
-            "main": "step1_components-and-lazy-loading/answer/src/main.ts",
-            "polyfills": "step1_components-and-lazy-loading/answer/src/polyfills.ts",
-            "tsConfig": "step1_components-and-lazy-loading/answer/tsconfig.app.json",
+            "outputPath": "step1_components-and-lazy-loading/exercise/dist/angular-todo",
+            "index": "step1_components-and-lazy-loading/exercise/src/index.html",
+            "main": "step1_components-and-lazy-loading/exercise/src/main.ts",
+            "polyfills": "step1_components-and-lazy-loading/exercise/src/polyfills.ts",
+            "tsConfig": "step1_components-and-lazy-loading/exercise/tsconfig.app.json",
             "aot": true,
             "assets": [
-              "step1_components-and-lazy-loading/answer/src/favicon.ico",
-              "step1_components-and-lazy-loading/answer/src/assets"
+              "step1_components-and-lazy-loading/exercise/src/favicon.ico",
+              "step1_components-and-lazy-loading/exercise/src/assets"
             ],
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/purple-green.css",
-              "step1_components-and-lazy-loading/answer/src/styles.scss"
+              "step1_components-and-lazy-loading/exercise/src/styles.scss"
             ],
             "scripts": []
           },
@@ -160,8 +161,8 @@
             "production": {
               "fileReplacements": [
                 {
-                  "replace": "step1_components-and-lazy-loading/answer/src/environments/environment.ts",
-                  "with": "step1_components-and-lazy-loading/answer/src/environments/environment.prod.ts"
+                  "replace": "step1_components-and-lazy-loading/exercise/src/environments/environment.ts",
+                  "with": "step1_components-and-lazy-loading/exercise/src/environments/environment.prod.ts"
                 }
               ],
               "optimization": true,
@@ -190,45 +191,46 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "step1-answer:build"
+            "browserTarget": "step1-exercise:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "step1-answer:build:production"
+              "browserTarget": "step1-exercise:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "step1-answer:build"
+            "browserTarget": "step1-exercise:build"
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "step1_components-and-lazy-loading/answer/src/test.ts",
-            "polyfills": "step1_components-and-lazy-loading/answer/src/polyfills.ts",
-            "tsConfig": "step1_components-and-lazy-loading/answer/tsconfig.spec.json",
-            "karmaConfig": "step1_components-and-lazy-loading/answer/karma.conf.js",
+            "main": "step1_components-and-lazy-loading/exercise/src/test.ts",
+            "polyfills": "step1_components-and-lazy-loading/exercise/src/polyfills.ts",
+            "tsConfig": "step1_components-and-lazy-loading/exercise/tsconfig.spec.json",
+            "karmaConfig": "step1_components-and-lazy-loading/exercise/karma.conf.js",
             "assets": [
-              "step1_components-and-lazy-loading/answer/src/favicon.ico",
-              "step1_components-and-lazy-loading/answer/src/assets"
+              "step1_components-and-lazy-loading/exercise/src/favicon.ico",
+              "step1_components-and-lazy-loading/exercise/src/assets"
             ],
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/purple-green.css",
-              "step1_components-and-lazy-loading/answer/src/styles.scss"
+              "step1_components-and-lazy-loading/exercise/src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [],
+            "browsers": "ChromeHeadless"
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "step1_components-and-lazy-loading/answer/tsconfig.app.json",
-              "step1_components-and-lazy-loading/answer/tsconfig.spec.json",
-              "step1_components-and-lazy-loading/answer/e2e/tsconfig.json"
+              "step1_components-and-lazy-loading/exercise/tsconfig.app.json",
+              "step1_components-and-lazy-loading/exercise/tsconfig.spec.json",
+              "step1_components-and-lazy-loading/exercise/e2e/tsconfig.json"
             ],
             "exclude": [
               "**/node_modules/**"
@@ -239,11 +241,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "step1-answer:serve"
+            "devServerTarget": "step1-exercise:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "step1-answer:serve:production"
+              "devServerTarget": "step1-exercise:serve:production"
             }
           }
         }
@@ -342,7 +344,8 @@
               "./node_modules/@angular/material/prebuilt-themes/purple-green.css",
               "step1_components-and-lazy-loading/solution/src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [],
+            "browsers": "ChromeHeadless"
           }
         },
         "lint": {
@@ -372,33 +375,33 @@
         }
       }
     },
-    "step2-answer": {
+    "step2-exercise": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
           "style": "scss"
         }
       },
-      "root": "step2_header-and-navigation-menu/answer",
-      "sourceRoot": "step2_header-and-navigation-menu/answer/src",
+      "root": "step2_header-and-navigation-menu/exercise",
+      "sourceRoot": "step2_header-and-navigation-menu/exercise/src",
       "prefix": "app",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "step2_header-and-navigation-menu/answer/dist/angular-todo",
-            "index": "step2_header-and-navigation-menu/answer/src/index.html",
-            "main": "step2_header-and-navigation-menu/answer/src/main.ts",
-            "polyfills": "step2_header-and-navigation-menu/answer/src/polyfills.ts",
-            "tsConfig": "step2_header-and-navigation-menu/answer/tsconfig.app.json",
+            "outputPath": "step2_header-and-navigation-menu/exercise/dist/angular-todo",
+            "index": "step2_header-and-navigation-menu/exercise/src/index.html",
+            "main": "step2_header-and-navigation-menu/exercise/src/main.ts",
+            "polyfills": "step2_header-and-navigation-menu/exercise/src/polyfills.ts",
+            "tsConfig": "step2_header-and-navigation-menu/exercise/tsconfig.app.json",
             "aot": true,
             "assets": [
-              "step2_header-and-navigation-menu/answer/src/favicon.ico",
-              "step2_header-and-navigation-menu/answer/src/assets"
+              "step2_header-and-navigation-menu/exercise/src/favicon.ico",
+              "step2_header-and-navigation-menu/exercise/src/assets"
             ],
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/purple-green.css",
-              "step2_header-and-navigation-menu/answer/src/styles.scss"
+              "step2_header-and-navigation-menu/exercise/src/styles.scss"
             ],
             "scripts": []
           },
@@ -406,8 +409,8 @@
             "production": {
               "fileReplacements": [
                 {
-                  "replace": "step2_header-and-navigation-menu/answer/src/environments/environment.ts",
-                  "with": "step2_header-and-navigation-menu/answer/src/environments/environment.prod.ts"
+                  "replace": "step2_header-and-navigation-menu/exercise/src/environments/environment.ts",
+                  "with": "step2_header-and-navigation-menu/exercise/src/environments/environment.prod.ts"
                 }
               ],
               "optimization": true,
@@ -436,45 +439,46 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "step2-answer:build"
+            "browserTarget": "step2-exercise:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "step2-answer:build:production"
+              "browserTarget": "step2-exercise:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "step2-answer:build"
+            "browserTarget": "step2-exercise:build"
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "step2_header-and-navigation-menu/answer/src/test.ts",
-            "polyfills": "step2_header-and-navigation-menu/answer/src/polyfills.ts",
-            "tsConfig": "step2_header-and-navigation-menu/answer/tsconfig.spec.json",
-            "karmaConfig": "step2_header-and-navigation-menu/answer/karma.conf.js",
+            "main": "step2_header-and-navigation-menu/exercise/src/test.ts",
+            "polyfills": "step2_header-and-navigation-menu/exercise/src/polyfills.ts",
+            "tsConfig": "step2_header-and-navigation-menu/exercise/tsconfig.spec.json",
+            "karmaConfig": "step2_header-and-navigation-menu/exercise/karma.conf.js",
             "assets": [
-              "step2_header-and-navigation-menu/answer/src/favicon.ico",
-              "step2_header-and-navigation-menu/answer/src/assets"
+              "step2_header-and-navigation-menu/exercise/src/favicon.ico",
+              "step2_header-and-navigation-menu/exercise/src/assets"
             ],
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/purple-green.css",
-              "step2_header-and-navigation-menu/answer/src/styles.scss"
+              "step2_header-and-navigation-menu/exercise/src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [],
+            "browsers": "ChromeHeadless"
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "step2_header-and-navigation-menu/answer/tsconfig.app.json",
-              "step2_header-and-navigation-menu/answer/tsconfig.spec.json",
-              "step2_header-and-navigation-menu/answer/e2e/tsconfig.json"
+              "step2_header-and-navigation-menu/exercise/tsconfig.app.json",
+              "step2_header-and-navigation-menu/exercise/tsconfig.spec.json",
+              "step2_header-and-navigation-menu/exercise/e2e/tsconfig.json"
             ],
             "exclude": [
               "**/node_modules/**"
@@ -485,11 +489,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "step2-answer:serve"
+            "devServerTarget": "step2-exercise:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "step2-answer:serve:production"
+              "devServerTarget": "step2-exercise:serve:production"
             }
           }
         }
@@ -588,7 +592,8 @@
               "./node_modules/@angular/material/prebuilt-themes/purple-green.css",
               "step2_header-and-navigation-menu/solution/src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [],
+            "browsers": "ChromeHeadless"
           }
         },
         "lint": {
@@ -613,6 +618,254 @@
           "configurations": {
             "production": {
               "devServerTarget": "step2-solution:serve:production"
+            }
+          }
+        }
+      }
+    },
+    "step3-exercise": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "step3_services-and-http-requests/exercise",
+      "sourceRoot": "step3_services-and-http-requests/exercise/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "step3_services-and-http-requests/exercise/dist/angular-todo",
+            "index": "step3_services-and-http-requests/exercise/src/index.html",
+            "main": "step3_services-and-http-requests/exercise/src/main.ts",
+            "polyfills": "step3_services-and-http-requests/exercise/src/polyfills.ts",
+            "tsConfig": "step3_services-and-http-requests/exercise/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "step3_services-and-http-requests/exercise/src/favicon.ico",
+              "step3_services-and-http-requests/exercise/src/assets"
+            ],
+            "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/purple-green.css",
+              "step3_services-and-http-requests/exercise/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "step3_services-and-http-requests/exercise/src/environments/environment.ts",
+                  "with": "step3_services-and-http-requests/exercise/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "step3-exercise:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "step3-exercise:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "step3-exercise:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "step3_services-and-http-requests/exercise/src/test.ts",
+            "polyfills": "step3_services-and-http-requests/exercise/src/polyfills.ts",
+            "tsConfig": "step3_services-and-http-requests/exercise/tsconfig.spec.json",
+            "karmaConfig": "step3_services-and-http-requests/exercise/karma.conf.js",
+            "assets": [
+              "step3_services-and-http-requests/exercise/src/favicon.ico",
+              "step3_services-and-http-requests/exercise/src/assets"
+            ],
+            "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/purple-green.css",
+              "step3_services-and-http-requests/exercise/src/styles.scss"
+            ],
+            "scripts": [],
+            "browsers": "ChromeHeadless"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "step3_services-and-http-requests/exercise/tsconfig.app.json",
+              "step3_services-and-http-requests/exercise/tsconfig.spec.json",
+              "step3_services-and-http-requests/exercise/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "e2e/protractor.conf.js",
+            "devServerTarget": "step3-exercise:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "step3-exercise:serve:production"
+            }
+          }
+        }
+      }
+    },
+    "step3-solution": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "step3_services-and-http-requests/solution",
+      "sourceRoot": "step3_services-and-http-requests/solution/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "step3_services-and-http-requests/solution/dist/angular-todo",
+            "index": "step3_services-and-http-requests/solution/src/index.html",
+            "main": "step3_services-and-http-requests/solution/src/main.ts",
+            "polyfills": "step3_services-and-http-requests/solution/src/polyfills.ts",
+            "tsConfig": "step3_services-and-http-requests/solution/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "step3_services-and-http-requests/solution/src/favicon.ico",
+              "step3_services-and-http-requests/solution/src/assets"
+            ],
+            "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/purple-green.css",
+              "step3_services-and-http-requests/solution/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "step3_services-and-http-requests/solution/src/environments/environment.ts",
+                  "with": "step3_services-and-http-requests/solution/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "step3-solution:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "step3-solution:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "step3-solution:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "step3_services-and-http-requests/solution/src/test.ts",
+            "polyfills": "step3_services-and-http-requests/solution/src/polyfills.ts",
+            "tsConfig": "step3_services-and-http-requests/solution/tsconfig.spec.json",
+            "karmaConfig": "step3_services-and-http-requests/solution/karma.conf.js",
+            "assets": [
+              "step3_services-and-http-requests/solution/src/favicon.ico",
+              "step3_services-and-http-requests/solution/src/assets"
+            ],
+            "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/purple-green.css",
+              "step3_services-and-http-requests/solution/src/styles.scss"
+            ],
+            "scripts": [],
+            "browsers": "ChromeHeadless"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "step3_services-and-http-requests/solution/tsconfig.app.json",
+              "step3_services-and-http-requests/solution/tsconfig.spec.json",
+              "step3_services-and-http-requests/solution/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "e2e/protractor.conf.js",
+            "devServerTarget": "step3-solution:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "step3-solution:serve:production"
             }
           }
         }
