@@ -3,10 +3,11 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "all-tests": "./run-all-tests.sh",
-    "step1": "./run-side-by-side.sh step1-exercise step1-solution",
-    "step2": "./run-side-by-side.sh step2-exercise step2-solution",
-    "step3": "./run-side-by-side.sh step3-exercise step3-solution"
+    "all-tests": "node scripts/run-all-tests.js",
+    "step1": "node scripts/run-side-by-side.js step1-exercise step1-solution",
+    "step2": "node scripts/run-side-by-side.js step2-exercise step2-solution",
+    "step3": "node scripts/run-side-by-side.js step3-exercise step3-solution",
+    "step": "node scripts/run-step.js"
   },
   "dependencies": {
     "@angular/animations": "~10.2.0",

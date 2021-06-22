@@ -14,24 +14,31 @@ If you're interested in checking out the documentation automatically generated b
 ```Bash
 # Valid steps:
 # - final-solution
-# - step1-answer
+# - step1-exercise
 # - step1-solution
-# - step2-answer
+# - step2-exercise
 # - step2-solution
+# - step3-exercise
+# - step3-solution
 
-./run-step.sh step1-answer # serves the code from step1's answer directory.
+npm run step step1-exercise # serves the code from step1's exercise directory.
 ```
 
 **Additional information**:
 
-`./run-step.sh` is used when you would like to run the mock server along with a given step.
+`npm run step` is used when you would like to run the mock server along with a given step.
 
 If you would like to run two steps side by side you can do so by doing the following:
 
-1. Use a terminal and run `./run-step.sh <target step>`.
+1. Use a terminal and run `npm run step <target step>`.
     + This will start the mock server and the provided step.
 2. Open another terminal and run `ng serve <target step> --port 4300`.
     + This will run a step on the provided port without attempting to start the mock server since it is already running.
+    + Alternatively, you can run steps side-by-side by running `npm run step1` (`step2`, `step3`).
+        - If you would like more flexibility you can invoke:
+            + MacOS: `node ./scripts/run-side-by-side.js <firstStepName> <secondStepName>`.
+            + Windows: `node .\scripts\run-side-by-side.js <firstStepName> <secondStepName>`
+
 
 Now two different Angular applications will be running on different ports, and you can open them side by side for comparison.
 
