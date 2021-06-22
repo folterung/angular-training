@@ -1,6 +1,7 @@
 const { execSync } = require('child_process');
 const { error, log } = require('console');
 const { join } = require('path');
+const { cmdStrToOSCmd } = require(join(__dirname, 'helpers.js'));
 
 const yellow ='\x1b[33m';
 const red = '\x1b[31m';
@@ -14,8 +15,10 @@ if (!stepName) {
 
 try {
     const mockServerPath = join(__dirname, '..', 'mock-api', 'server.js');
+    const startMockServerCmd = cmdStrToOSCmd(`node ${mockServerPath}`);
+    const serveStepCmd = cmdStrToOSCmd(`npx ng serve ${stepName}`);
 
-    execSync(`npx concurrently --kill-others \\"node ${mockServerPath}\\" \\"npx ng serve ${stepName}\\"`, {stdio: 'inherit'});
+    execSync(`npx concurrently --kill-others ${startMockServerCmd} ${serveStepCmd}`, {stdio: 'inherit'});
 } catch (err) {
     error(err);
 }
