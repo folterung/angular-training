@@ -15,7 +15,7 @@ if (!stepName) {
 try {
     const mockServerPath = join(__dirname, '..', 'mock-api', 'server.js');
 
-    execSync(`npx concurrently --kill-others "node ${mockServerPath}" "npx ng serve ${stepName}"`, {stdio: 'inherit'});
+    execSync(`npx concurrently --kill-others \\"node ${mockServerPath}\\" \\"npx ng serve ${stepName}\\"`, {stdio: 'inherit'});
 } catch (err) {
     error(err);
 }
